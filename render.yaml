@@ -1,0 +1,13 @@
+# Despliegue en Render. Conecta tu repo de GitHub y Render leerá este archivo.
+services:
+  - type: web
+    name: beerpong-tournament
+    runtime: node
+    plan: free            # cámbialo a "starter" (~$7/mes) para que no se duerma
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false        # la pegas tú en el panel (la de Neon)
+      - key: ROOM_TTL_DAYS
+        value: "7"

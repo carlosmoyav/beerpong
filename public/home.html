@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Torneo Beer Pong</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/home.css" />
+</head>
+<body class="home-body">
+  <div class="home-wrap">
+    <div class="home-hero">
+      <div class="cup">🍺</div>
+      <h1>Torneo Beer Pong</h1>
+      <p>Crea tu torneo, ponle un PIN y comparte el QR con tus amigos.</p>
+    </div>
+
+    <div class="card stack">
+      <h2>Nuevo torneo</h2>
+      <div><label>Nombre del torneo</label><input id="name" placeholder="Cumple de..." maxlength="40" /></div>
+      <div><label>Subtítulo (opcional)</label><input id="sub" placeholder="Beer Pong 2026" maxlength="40" /></div>
+      <div><label>Tipo</label>
+        <div class="seg" id="mode">
+          <button data-v="individual" class="active" type="button">Individual</button>
+          <button data-v="team" type="button">Por equipos</button>
+        </div>
+      </div>
+      <div><label>PIN del panel (para tu celular)</label><input id="pin" inputmode="numeric" placeholder="1234" maxlength="8" /></div>
+      <button id="createBtn" class="btn btn-primary btn-block">Crear torneo 🚀</button>
+      <div id="err" class="err"></div>
+    </div>
+
+    <div class="card stack">
+      <h2>¿Ya tienes un torneo?</h2>
+      <div class="muted">Abre la pantalla del proyector con el código del torneo.</div>
+      <div class="row">
+        <input id="code" placeholder="Código (ej. K7QP)" maxlength="4" style="text-transform:uppercase" />
+        <button id="openBtn" class="btn btn-lime grow0">Abrir</button>
+      </div>
+      <div id="err2" class="err"></div>
+    </div>
+  </div>
+
+  <script src="/js/home.js"></script>
+</body>
+</html>

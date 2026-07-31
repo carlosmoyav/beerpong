@@ -1,0 +1,7 @@
+.home-body { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 24px 16px 60px; }
+.home-wrap { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 16px; }
+.home-hero { text-align: center; padding: 10px 0 4px; }
+.home-hero .cup { font-size: 64px; filter: drop-shadow(0 0 26px rgba(255,46,77,.5)); }
+.home-hero h1 { font-size: clamp(28px, 8vw, 40px); letter-spacing: -1px; margin-top: 4px; }
+.home-hero p { color: var(--muted); margin-top: 6px; font-size: 15px; }
+.err { color: #ffb3b3; font-size: 13px; min-height: 16px; }

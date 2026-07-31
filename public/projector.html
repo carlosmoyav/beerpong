@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Torneo Beer Pong</title>
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/projector.css" />
+</head>
+<body class="proj-body">
+
+  <!-- Sin torneo -->
+  <div id="empty" class="proj-empty">
+    <div class="cup">🍺</div>
+    <h1>Torneo Beer Pong</h1>
+    <p>Esperando a que el administrador cree el torneo desde su celular…</p>
+    <button id="showQrEmpty" class="btn btn-primary">Mostrar QR del panel</button>
+  </div>
+
+  <!-- Torneo en marcha -->
+  <div id="app" class="proj-app hidden">
+    <header class="proj-header">
+      <div class="proj-title">
+        <div id="tName" class="t-name">Torneo</div>
+        <div id="tSub" class="t-sub"></div>
+      </div>
+      <div class="proj-round">
+        <span class="lbl">Ronda actual</span>
+        <span id="roundName" class="rname neon-cyan">—</span>
+      </div>
+      <div class="proj-actions">
+        <span id="roomCode" class="room-code"></span>
+        <span id="statusPill" class="tag"></span>
+        <button id="qrBtn" class="btn btn-sm btn-ghost">QR panel</button>
+        <button id="fsBtn" class="btn btn-sm btn-ghost">⛶ Pantalla completa</button>
+      </div>
+    </header>
+
+    <main class="proj-main">
+      <section class="proj-left">
+        <div class="now-card" id="nowCard">
+          <div class="now-label">🔴 JUGANDO AHORA</div>
+          <div class="now-vs" id="nowVs">
+            <div class="now-team a"><span class="nm">—</span><div class="prack" id="rackA"></div><span class="now-cups" id="nowCupsA">0/6</span></div>
+            <div class="now-mid">VS</div>
+            <div class="now-team b"><span class="nm">—</span><div class="prack" id="rackB"></div><span class="now-cups" id="nowCupsB">0/6</span></div>
+          </div>
+          <div class="now-meta" id="nowMeta"></div>
+        </div>
+
+        <div class="next-card" id="nextCard">
+          <div class="next-label">⏭ Próximo partido</div>
+          <div class="next-vs" id="nextVs">—</div>
+        </div>
+
+        <div class="leaders-card" id="leadersCard">
+          <div class="leaders-label">🍺 Líderes de copas</div>
+          <div id="leadersList" class="leaders-list"></div>
+        </div>
+
+        <div class="recent-card">
+          <div class="recent-label">Resultados recientes</div>
+          <div id="recentList" class="recent-list"></div>
+        </div>
+      </section>
+
+      <section class="proj-bracket" id="bracket"></section>
+    </main>
+  </div>
+
+  <!-- Pop-up grande cuando alguien anota -->
+  <div id="scorePop" class="score-pop hidden">
+    <div class="sp-inner">
+      <div class="sp-rack" id="spRack"></div>
+      <div class="sp-text">¡ANOTÓ!</div>
+      <div class="sp-name" id="spName"></div>
+    </div>
+  </div>
+
+  <!-- Cuenta regresiva gigante (últimos 10 segundos) -->
+  <div id="bigCountdown" class="big-countdown hidden">
+    <div class="bc-num" id="bcNum">10</div>
+    <div class="bc-label">segundos</div>
+  </div>
+
+  <!-- Pantalla especial de campeon -->
+  <div id="championScreen" class="champ-screen hidden">
+    <div class="champ-inner">
+      <div class="champ-cup">🏆</div>
+      <div class="champ-label">CAMPEÓN</div>
+      <div id="champName" class="champ-name neon-gold">—</div>
+      <div id="runnerName" class="champ-runner"></div>
+      <div id="champMvp" class="champ-mvp"></div>
+      <button id="champClose" class="btn btn-ghost btn-sm">Ver llaves</button>
+    </div>
+  </div>
+
+  <!-- Modal QR -->
+  <div id="qrModal" class="qr-modal hidden">
+    <div class="qr-box">
+      <h2>Abrir el panel en el celular</h2>
+      <img id="qrImg" alt="QR" />
+      <div id="qrUrl" class="qr-url mono"></div>
+      <p class="qr-hint">Escanea el código o abre esa dirección en tu teléfono (misma red Wi-Fi).</p>
+      <button id="qrClose" class="btn btn-primary">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/projector.js"></script>
+</body>
+</html>
