@@ -167,3 +167,32 @@
 .undo-cup { width: 30px; height: 26px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--text); font-size: 14px; line-height: 1; }
 .undo-cup:active { background: var(--panel-2); }
 .rack .allsunk { color: var(--lime); font-weight: 900; font-size: 18px; padding: 10px; }
+
+/* botones de la cabecera */
+.adm-header-btns { display: flex; gap: 6px; align-items: center; }
+#themeBtn { padding: 8px 10px; font-size: 15px; line-height: 1; }
+
+/* ---------- MODO CLARO (solo panel) ---------- */
+body.light {
+  --bg: #eef0f5;
+  --bg-2: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #eef1f7;
+  --line: #d7dbe6;
+  --text: #1a1a26;
+  --muted: #5f6070;
+  --shadow: 0 8px 30px rgba(20,20,45,.10);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(164,75,255,.06), transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, rgba(41,231,255,.05), transparent 55%),
+    var(--bg);
+}
+/* ajustes de contraste para acentos sobre fondo claro */
+body.light .adm-status,
+body.light .substat,
+body.light .hint,
+body.light .muted { color: #5f6070; }
+body.light .tag.lime { background: rgba(120,180,0,.14); border-color: rgba(120,180,0,.5); color: #4d7a00; }
+body.light .leader .acc,
+body.light .statgrid .stat .v { color: #1a1a26; }
+body.light .warn { color: #7a5c00; }

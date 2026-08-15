@@ -8,6 +8,27 @@ let currentTab = 'matches';
 let authed = false;
 let joined = false;
 
+// ---------- tema claro / oscuro ----------
+const THEME_KEY = 'bp_theme';
+function applyTheme(theme) {
+  const light = theme === 'light';
+  document.body.classList.toggle('light', light);
+  const btn = $('themeBtn');
+  if (btn) btn.textContent = light ? '☀️' : '🌙';
+}
+function initTheme() {
+  let saved = 'dark';
+  try { saved = localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) {}
+  applyTheme(saved);
+  const btn = $('themeBtn');
+  if (btn) btn.addEventListener('click', () => {
+    const now = document.body.classList.contains('light') ? 'dark' : 'light';
+    try { localStorage.setItem(THEME_KEY, now); } catch (e) {}
+    applyTheme(now);
+  });
+}
+initTheme();
+
 // ---------- comunicacion ----------
 function emit(event, payload) {
   return new Promise(resolve => {
