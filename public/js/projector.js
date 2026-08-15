@@ -49,6 +49,9 @@ async function openQR() {
 
 // ----- render principal -----
 function render(state) {
+  // El proyector sigue el modo claro/oscuro que se elige en el panel.
+  document.body.classList.toggle('light', !!(state.tournament && state.tournament.theme === 'light'));
+
   const useNick = state.tournament ? state.tournament.showNicknames : true;
   Sound.setEnabled(state.tournament ? state.tournament.soundEnabled : true);
 

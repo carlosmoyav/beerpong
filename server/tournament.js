@@ -68,6 +68,7 @@ function createTournament(state, { name, subtitle, mode }) {
     runnerUpId: null,
     soundEnabled: true,
     showNicknames: true,
+    theme: 'dark',            // 'dark' | 'light' (lo elige el panel, el proyector lo sigue)
     timerSeconds: 600         // 10 min por partido (0 = sin temporizador)
   };
   state.participants = [];
@@ -145,6 +146,7 @@ function setSettings(state, patch) {
   const t = state.tournament;
   if (typeof patch.soundEnabled === 'boolean') t.soundEnabled = patch.soundEnabled;
   if (typeof patch.showNicknames === 'boolean') t.showNicknames = patch.showNicknames;
+  if (patch.theme === 'light' || patch.theme === 'dark') t.theme = patch.theme;
   if (typeof patch.timerSeconds === 'number' && patch.timerSeconds >= 0) {
     t.timerSeconds = Math.min(patch.timerSeconds, 3600);
   }

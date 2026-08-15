@@ -9,7 +9,7 @@ let authed = false;
 let joined = false;
 
 // ---------- tema claro / oscuro ----------
-const THEME_KEY = 'bp_theme';
+// Se guarda como ajuste del torneo (setSettings) para que el proyector lo siga.
 function applyTheme(theme) {
   const light = theme === 'light';
   document.body.classList.toggle('light', light);
@@ -17,14 +17,12 @@ function applyTheme(theme) {
   if (btn) btn.textContent = light ? '☀️' : '🌙';
 }
 function initTheme() {
-  let saved = 'dark';
-  try { saved = localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) {}
-  applyTheme(saved);
+  applyTheme('dark');
   const btn = $('themeBtn');
   if (btn) btn.addEventListener('click', () => {
-    const now = document.body.classList.contains('light') ? 'dark' : 'light';
-    try { localStorage.setItem(THEME_KEY, now); } catch (e) {}
-    applyTheme(now);
+    const next = document.body.classList.contains('light') ? 'dark' : 'light';
+    applyTheme(next);                       // feedback inmediato
+    emit('setSettings', { theme: next });   // se guarda y se transmite al proyector
   });
 }
 initTheme();
@@ -126,6 +124,7 @@ $('undoBtn').addEventListener('click', () => emit('undo'));
 function draw() {
   if (!state) return;
   const t = state.tournament;
+  if (t && t.theme) applyTheme(t.theme);
   $('hName').textContent = t ? t.name : 'Sin torneo';
   $('hStatus').textContent = t ? statusText(t) : 'Crea un torneo para empezar';
   $('undoBtn').disabled = !state.canUndo;
